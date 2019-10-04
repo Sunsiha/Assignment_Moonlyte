@@ -1,10 +1,10 @@
 package com.moonlyte.assignmentmoonlyte.api;
+import com.moonlyte.assignmentmoonlyte.features.account.model.Users;
 import com.moonlyte.assignmentmoonlyte.model.Albums;
 import com.moonlyte.assignmentmoonlyte.model.Comments;
 import com.moonlyte.assignmentmoonlyte.model.Photos;
 import com.moonlyte.assignmentmoonlyte.model.Posts;
 import com.moonlyte.assignmentmoonlyte.model.Todos;
-import com.moonlyte.assignmentmoonlyte.model.Users;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface API {
+
+    @GET("/users")
+    Call<List<com.moonlyte.assignmentmoonlyte.model.Users>> getUsersOld();
 
     @GET("/users")
     Call<List<Users>> getUsers();

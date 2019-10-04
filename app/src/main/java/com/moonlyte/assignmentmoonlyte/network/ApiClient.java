@@ -20,11 +20,11 @@ public class ApiClient {
         final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-//        final OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .connectTimeout(40, TimeUnit.SECONDS)
                 .readTimeout(40, TimeUnit.SECONDS)
                 .writeTimeout(40, TimeUnit.SECONDS)
+                .addInterceptor(interceptor)
                 .build();
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
@@ -33,6 +33,7 @@ public class ApiClient {
                     .client(client)
                     .build();
         }
+
         return retrofit;
     }
 }

@@ -1,20 +1,15 @@
 package com.moonlyte.assignmentmoonlyte;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.moonlyte.assignmentmoonlyte.adapter.UsersAdapter;
 import com.moonlyte.assignmentmoonlyte.api.API;
@@ -23,7 +18,6 @@ import com.moonlyte.assignmentmoonlyte.model.Users;
 import com.moonlyte.assignmentmoonlyte.network.ApiClient;
 import com.moonlyte.assignmentmoonlyte.progressHUD.ProgressHUD;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,7 +46,7 @@ public class UsersActivity extends AppCompatActivity implements ListAction {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         backIV = (ImageView) toolbar.findViewById(R.id.backIV);
         backIV.setVisibility(View.GONE);
-        TextView toolbarTitleTv=(TextView)findViewById(R.id.toolbarTitleTv);
+        TextView toolbarTitleTv = (TextView) findViewById(R.id.toolbarTitleTv);
         toolbarTitleTv.setText("Users");
 
         usersRV = findViewById(R.id.usersRV);
@@ -71,7 +65,7 @@ public class UsersActivity extends AppCompatActivity implements ListAction {
      */
     private void getUsers() {
         progressHUD = ProgressHUD.show(UsersActivity.this, true, false, null);
-        Call<List<Users>> usersCall = this.api.getUsers();
+        Call<List<Users>> usersCall = this.api.getUsersOld();
         usersCall.enqueue(new Callback<List<Users>>() {
             @Override
             public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
